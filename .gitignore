@@ -1,0 +1,96 @@
+# ======================
+# PyCharm / IDE (all levels)
+# ======================
+.idea/
+**/.idea/
+*.iml
+
+# ======================
+# Python cache (all levels)
+# ======================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# ======================
+# Virtual environments (anywhere)
+# ======================
+venv/
+.venv/
+env/
+ENV/
+**/venv/
+**/.venv/
+**/env/
+**/ENV/
+
+# ======================
+# Learning / scratch files
+# ======================
+learn.py
+**/learn.py
+
+# ======================
+# Deep Learning models
+# ======================
+*.pth
+*.pt
+*.ckpt
+**/*.pth
+**/*.pt
+**/*.ckpt
+
+# ======================
+# Dataset / data folders (any project)
+# ======================
+data/
+dataset/
+datasets/
+**/data/
+**/dataset/
+**/datasets/
+
+# ======================
+# Logs / experiment outputs
+# ======================
+logs/
+runs/
+output/
+outputs/
+**/logs/
+**/runs/
+**/output/
+**/outputs/
+*.log
+
+# ======================
+# Matplotlib / results images
+# ======================
+*.png
+*.jpg
+*.jpeg
+*.pdf
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.pdf
+
+# ======================
+# Jupyter
+# ======================
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# ======================
+# OS junk
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Temp files
+# ======================
+*.tmp
+*.swp
+*.bak
