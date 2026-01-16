@@ -50,6 +50,7 @@ datasets/
 **/data/
 **/dataset/
 **/datasets/
+**/cat_dog/
 
 # ======================
 # Logs / experiment outputs
