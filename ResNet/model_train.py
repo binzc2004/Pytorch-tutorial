@@ -21,9 +21,7 @@ def train_val_data_process():
     # -------- train（添加丰富的数据增强）--------
     ROOT_TRAIN = "./data/train"
     train_transforms = transforms.Compose([
-        transforms.Resize(256),
-        transforms.RandomCrop(224, padding=8),  # 轻微位置扰动
-        transforms.RandomHorizontalFlip(p=0.5),  # 猫狗 OK
+        transforms.Resize((224,224)),
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std)
     ])
@@ -31,7 +29,7 @@ def train_val_data_process():
     train_data = ImageFolder(ROOT_TRAIN, transform=train_transforms)
     train_loader = Data.DataLoader(
         train_data,
-        batch_size=32,
+        batch_size=64,
         shuffle=True
     )
 
@@ -45,7 +43,7 @@ def train_val_data_process():
     val_data = ImageFolder(ROOT_VAL, transform=val_transforms)
     val_loader = Data.DataLoader(
         val_data,
-        batch_size=32,
+        batch_size=64,
         shuffle=False   # 验证集不打乱，保证评估稳定
     )
 
@@ -158,7 +156,8 @@ def train_model(
             # ====== 保存 best model ======
             if val_acc > best_acc:
                 best_acc = val_acc
-                best_model_weights = model.state_dict()
+                best_model_weights = copy.deepcopy(model.state_dict())
+
 
             # ====== 保存 checkpoint（每个 epoch 都保存） ======
             checkpoint = {

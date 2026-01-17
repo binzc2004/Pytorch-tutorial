@@ -2,6 +2,8 @@ import torch
 import torch.nn.functional as F
 from torchvision import transforms
 from PIL import Image
+from torchvision import models
+from torch import nn
 from model import Residual,ResNet18  # 或 ResNet18 等
 
 # -----------------------------
@@ -17,8 +19,9 @@ class_names = ['cat', 'dog']  # 注意顺序
 # -----------------------------
 # 3. 模型加载
 # -----------------------------
-model = ResNet18(Residual,in_channels=3,num_classes=len(class_names))
-model.load_state_dict(torch.load("./ResNet/best_model.pth", map_location=device))
+model = models.resnet18(weights=None)  # ❗这里 False
+model.fc = nn.Linear(model.fc.in_features, 2)
+model.load_state_dict(torch.load("ResNet/best_pretrained.pth", map_location=device))
 model.to(device)
 model.eval()
 
@@ -62,7 +65,7 @@ def predict_image(image_path):
 # 6. 测试
 # -----------------------------
 if __name__ == "__main__":
-    img_path = "dog.png"   # 改成你的图片路径
+    img_path = "img.png"   # 改成你的图片路径
     label, conf, all_probs = predict_image(img_path)
 
     print(f"预测结果: {label}")
